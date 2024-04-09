@@ -4,16 +4,12 @@ import k_diffusion.sampling
 from modules import sd_samplers_common, sd_samplers_kdiffusion, sd_samplers
 from tqdm.auto import trange, tqdm
 from k_diffusion import utils
+from k_diffusion.sampling import to_d
 import math
 
 NAME = 'Euler_Smea_Dy'
 ALIAS = 'euler_smea_dy'
 
-
-
-def to_d(x, sigma, denoised):
-    """Converts a denoiser output to a Karras ODE derivative."""
-    return (x - denoised) / utils.append_dims(sigma, x.ndim)
 
 
 @torch.no_grad()
